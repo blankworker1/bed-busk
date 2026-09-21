@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bed &amp; Busk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="nav-logo" href="index.html">Bed &amp; Busk</a>
+    </div>
+    <div class="nav-links">
+      <button class="btn btn-sm btn-dark">Sign in</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Find your city</h1>
+    <p>A barter platform for travelling artists — a bed, a meal, and a place to perform, wherever the next stop is.</p>
+  </header>
+
+  <section class="section section-tight-top">
+    <div class="map-frame" id="world-map" style="height: 360px;"></div>
+  </section>
+
+  <section class="section">
+    <div class="search-wrap">
+      <input id="city-search" class="search-input" type="text" placeholder="Where are you headed?" autocomplete="off">
+      <div id="city-suggestions" class="search-suggestions" style="display:none;"></div>
+    </div>
+  </section>
+
+  <footer class="section" style="border-bottom:none;">
+    <div class="section-header">
+      <h2 style="font-size:19px;">Bosa in pictures</h2>
+      <div class="hint">Loaded live from Wikimedia, credited per image · swipe to browse</div>
+    </div>
+    <div class="gallery" id="city-gallery">
+      <div class="gallery-loading">Loading images…</div>
+    </div>
+    <div style="text-align:center; margin-top:28px; font-family:var(--font-display); font-size:15px; color:var(--text-muted);">Bed &amp; Busk — a barter platform for travelling artists</div>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Every active city, one entry each — this is the whole "database" for now.
+  // No Country/Region pages: the map and this array are the only geography layer.
+  var CITIES = [
+    { name: "Bosa", region: "Sardinia", country: "Italy", lat: 40.2957, lng: 8.4970, url: "bosa.html" }
+  ];
+
+  // --- World map, one pin per active city ---
+  var map = L.map('world-map', { scrollWheelZoom: false }).setView([43, 10], 5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  var pinIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:16px;height:16px;border-radius:50%;background:#B54A2A;border:2px solid #FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,0.35);"></div>',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8]
+  });
+
+  CITIES.forEach(function (c) {
+    L.marker([c.lat, c.lng], { icon: pinIcon })
+      .addTo(map)
+      .bindPopup('<strong>' + c.name + '</strong><br>' + c.region + ', ' + c.country +
+        '<br><a href="' + c.url + '">View city →</a>');
+  });
+
+  // --- Search box with autocomplete (name, region, country) ---
+  var input = document.getElementById('city-search');
+  var suggestions = document.getElementById('city-suggestions');
+
+  function renderSuggestions(query) {
+    var q = query.trim().toLowerCase();
+    if (!q) { suggestions.style.display = 'none'; suggestions.innerHTML = ''; return; }
+
+    var matches = CITIES.filter(function (c) {
+      return c.name.toLowerCase().indexOf(q) !== -1 ||
+             c.region.toLowerCase().indexOf(q) !== -1 ||
+             c.country.toLowerCase().indexOf(q) !== -1;
+    });
+
+    suggestions.innerHTML = '';
+    if (!matches.length) {
+      var empty = document.createElement('div');
+      empty.className = 'search-empty';
+      empty.textContent = 'No cities yet — Bosa is the only pilot city so far.';
+      suggestions.appendChild(empty);
+    } else {
+      matches.forEach(function (c) {
+        var a = document.createElement('a');
+        a.className = 'search-suggestion';
+        a.href = c.url;
+        a.innerHTML = c.name + ' <span class="place">— ' + c.region + ', ' + c.country + '</span>';
+        suggestions.appendChild(a);
+      });
+    }
+    suggestions.style.display = 'block';
+  }
+
+  input.addEventListener('input', function () { renderSuggestions(input.value); });
+  input.addEventListener('focus', function () { if (input.value) renderSuggestions(input.value); });
+  document.addEventListener('click', function (e) {
+    if (!suggestions.contains(e.target) && e.target !== input) {
+      suggestions.style.display = 'none';
+    }
+  });
+</script>
+
+<script>
+  // City gallery — same live Wikimedia fetch as the city hub pages; on the
+  // homepage it previews the only pilot city so far. Once there's more than
+  // one active city this should rotate or pull from several.
+  (function () {
+    var PAGE_TITLE = 'Bosa';
+    var WANTED = 6;
+    var galleryEl = document.getElementById('city-gallery');
+
+    function stripHtml(html) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = html || '';
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function looksLikePhoto(title) {
+      var lower = title.toLowerCase();
+      if (!/\.(jpe?g)$/.test(lower)) return false;
+      if (lower.indexOf('stemma') !== -1) return false;
+      if (lower.indexOf('location map') !== -1) return false;
+      if (lower.indexOf('flag') !== -1) return false;
+      return true;
+    }
+
+    var pageImagesUrl = 'https://en.wikipedia.org/w/api.php?action=query&titles=' +
+      encodeURIComponent(PAGE_TITLE) + '&prop=images&imlimit=50&format=json&origin=*';
+
+    fetch(pageImagesUrl)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var pages = data.query && data.query.pages;
+        if (!pages) throw new Error('no pages');
+        var page = pages[Object.keys(pages)[0]];
+        var titles = (page.images || [])
+          .map(function (i) { return i.title; })
+          .filter(looksLikePhoto)
+          .slice(0, WANTED);
+        if (!titles.length) throw new Error('no photo-like images found');
+
+        var infoUrl = 'https://en.wikipedia.org/w/api.php?action=query&titles=' +
+          encodeURIComponent(titles.join('|')) +
+          '&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=280&format=json&origin=*';
+        return fetch(infoUrl).then(function (r) { return r.json(); });
+      })
+      .then(function (data) {
+        var pages = data.query && data.query.pages;
+        if (!pages) throw new Error('no image info');
+        var items = Object.keys(pages).map(function (k) { return pages[k]; })
+          .filter(function (p) { return p.imageinfo && p.imageinfo[0]; });
+
+        if (!items.length) throw new Error('no usable images');
+
+        galleryEl.innerHTML = '';
+        items.slice(0, WANTED).forEach(function (p) {
+          var info = p.imageinfo[0];
+          var meta = info.extmetadata || {};
+          var artist = stripHtml(meta.Artist && meta.Artist.value).trim() || 'Wikimedia Commons';
+          var license = (meta.LicenseShortName && meta.LicenseShortName.value) || '';
+
+          var item = document.createElement('div');
+          item.className = 'gallery-item';
+
+          var img = document.createElement('img');
+          img.src = info.thumburl || info.url;
+          img.alt = p.title.replace(/^File:/, '').replace(/\.[a-zA-Z]+$/, '');
+          img.loading = 'lazy';
+
+          var credit = document.createElement('div');
+          credit.className = 'gallery-credit';
+          credit.textContent = artist + (license ? ' · ' + license : '');
+
+          item.appendChild(img);
+          item.appendChild(credit);
+          galleryEl.appendChild(item);
+        });
+      })
+      .catch(function () {
+        galleryEl.innerHTML = '<div class="gallery-loading">Couldn\'t load images from Wikimedia right now.</div>';
+      });
+  })();
+</script>
+</body>
+</html>

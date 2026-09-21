@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bosa — Bed &amp; Busk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo">Bed &amp; Busk</div>
+      <div class="nav-location">Italy / Sardinia / <strong>Bosa</strong></div>
+    </div>
+    <div class="nav-links">
+      <a href="#pitches">Pitches</a>
+      <a href="#patrons">Patrons</a>
+      <a href="#guide">Guide</a>
+      <a href="#community">Community</a>
+      <button class="btn btn-sm btn-dark">Sign in</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Bosa</h1>
+    <p>A river town on Sardinia's west coast — home to La Prova's touring circuit and a growing patron community.</p>
+    <div class="hero-stats">
+      <div><strong>9</strong> patrons</div>
+      <div><strong>6</strong> pitches</div>
+      <div>Guide updated <strong>Aug 2026</strong></div>
+    </div>
+  </header>
+
+  <section class="section section-tight-top">
+    <div class="section-header">
+      <h2>City map</h2>
+      <div class="hint">Zoomed out — open a pitch for its local detail map</div>
+    </div>
+    <div class="map-frame" id="city-map"></div>
+  </section>
+
+  <section id="pitches" class="section">
+    <div class="section-header">
+      <h2>Pitches</h2>
+      <a class="section-link" href="#">View all 6 →</a>
+    </div>
+    <div class="rows">
+      <a class="row" href="pitch.html">
+        <div>
+          <div class="row-title">Piazza Costituzione</div>
+          <div class="row-meta">Good acoustics · High foot traffic · Best evenings</div>
+        </div>
+        <div class="row-aside">12 reviews →</div>
+      </a>
+      <a class="row" href="pitch.html">
+        <div>
+          <div class="row-title">Lungotemo</div>
+          <div class="row-meta">Riverside · Quiet acoustics · Best at sunset</div>
+        </div>
+        <div class="row-aside">7 reviews →</div>
+      </a>
+      <a class="row" href="pitch.html">
+        <div>
+          <div class="row-title">Ponte Vecchio</div>
+          <div class="row-meta">Sheltered · High foot traffic · Wet-weather friendly</div>
+        </div>
+        <div class="row-aside">15 reviews →</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="patrons" class="section">
+    <div class="section-header">
+      <h2>Patrons in Bosa</h2>
+      <a class="section-link" href="#">View all 9 →</a>
+    </div>
+    <div class="card-grid">
+      <a class="card" href="patron.html">
+        <div class="avatar avatar-rust">EM</div>
+        <div class="card-name">Elena M.</div>
+        <div class="icon-row">
+          <span class="icon-tag"><span class="icon-glyph">🛏️</span> Bed</span>
+        </div>
+        <div class="badge-group"><span class="badge badge-rust">Bed for Busk</span></div>
+        <div class="card-desc">Spare room near the river. A short performance at dinner is hoped for — totally optional.</div>
+        <div class="card-rating">★★★★★ (8 reviews)</div>
+        <span class="status-pill status-hosting">Hosting now · Oct 3–20</span>
+      </a>
+      <a class="card" href="patron.html">
+        <div class="avatar avatar-sage">MT</div>
+        <div class="card-name">Marco T.</div>
+        <div class="icon-row">
+          <span class="icon-tag"><span class="icon-glyph">🛏️</span> Bed</span>
+        </div>
+        <div class="badge-group"><span class="badge badge-sage">Bed for Skill</span></div>
+        <div class="card-desc">Couch in a shared studio. Would love help with the vegetable garden in return.</div>
+        <div class="card-rating">★★★★☆ (5 reviews)</div>
+        <span class="status-pill status-off">Not currently hosting</span>
+      </a>
+      <a class="card" href="patron.html">
+        <div class="avatar avatar-rust">SR</div>
+        <div class="card-name">Sofia R.</div>
+        <div class="icon-row">
+          <span class="icon-tag"><span class="icon-glyph">🛏️</span> Bed</span>
+        </div>
+        <div class="badge-group"><span class="badge badge-rust">Standard Stay</span></div>
+        <div class="card-desc">No exchange expected — just glad to host touring artists passing through.</div>
+        <div class="card-rating">★★★★★ (11 reviews)</div>
+        <span class="status-pill status-hosting">Hosting now · Open-ended</span>
+      </a>
+      <a class="card" href="patron.html">
+        <div class="avatar avatar-sage">TN</div>
+        <div class="card-name">Trattoria da Nino</div>
+        <div class="icon-row">
+          <span class="icon-tag"><span class="icon-glyph">🍽️</span> Meal</span>
+        </div>
+        <div class="badge-group"><span class="badge badge-sage">Meal for Busk</span></div>
+        <div class="card-desc">A plate of the day plus a drink, in exchange for a 20-minute set during dinner service.</div>
+        <div class="card-rating">★★★★★ (6 reviews)</div>
+        <span class="status-pill status-hosting">Hosting now · Tue–Sat, 7–10pm</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="guide" class="section">
+    <div class="card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <div>
+        <h3 style="font-size:19px; font-weight:600; margin-bottom:10px;">Permits &amp; Local Rules</h3>
+        <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin:0 0 10px;">No permit required for acoustic performance in the historic centre; amplified sound needs comune approval after 8pm.</p>
+        <a class="section-link" href="#">Read the full guide →</a>
+      </div>
+      <div>
+        <h3 style="font-size:19px; font-weight:600; margin-bottom:10px;">Barter &amp; Exchange Notes</h3>
+        <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin:0 0 10px;">In-kind lodging exchange falls under Italian permuta law — occasional swaps need no registration.</p>
+        <a class="section-link" href="#">Read the full guide →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" class="section">
+    <h3 style="font-size:19px; font-weight:600; margin-bottom:16px;">Community notes</h3>
+    <div class="quote">"Best free coffee in town is at the bar by Ponte Vecchio — mention you're playing later and they'll usually wave the bill." — left by a touring artist</div>
+  </section>
+
+  <footer class="section" style="border-bottom:none;">
+    <div class="section-header">
+      <h2 style="font-size:19px;">Bosa in pictures</h2>
+      <div class="hint">Loaded live from Wikimedia, credited per image · swipe to browse</div>
+    </div>
+    <div class="gallery" id="city-gallery">
+      <div class="gallery-loading">Loading images…</div>
+    </div>
+    <div style="text-align:center; margin-top:28px; font-family:var(--font-display); font-size:15px; color:var(--text-muted);">Bed &amp; Busk — a barter platform for travelling artists</div>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var pitches = [
+    { name: "Piazza Costituzione", lat: 40.2951, lng: 8.4978, url: "pitch.html" },
+    { name: "Lungotemo",           lat: 40.2937, lng: 8.4955, url: "pitch.html" },
+    { name: "Ponte Vecchio",       lat: 40.2926, lng: 8.4936, url: "pitch.html" }
+  ];
+
+  var map = L.map('city-map', { scrollWheelZoom: false }).setView([40.2940, 8.4958], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  var pinIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:14px;height:14px;border-radius:50%;background:#B54A2A;border:2px solid #FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,0.35);"></div>',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7]
+  });
+
+  pitches.forEach(function (p) {
+    L.marker([p.lat, p.lng], { icon: pinIcon })
+      .addTo(map)
+      .bindPopup('<strong>' + p.name + '</strong><br><a href="' + p.url + '">View pitch →</a>');
+  });
+</script>
+
+<script>
+  // City gallery — pulls real, licensed photos from Wikimedia, using the
+  // curated set of images already used on that place's Wikipedia article
+  // (avoids ambiguous-name search results and guarantees relevance).
+  // Stage A's real build should replace this client-side call with the
+  // same query run once at build time, per PLATFORM_OVERVIEW.md.
+  (function () {
+    var PAGE_TITLE = 'Bosa';
+    var WANTED = 6;
+    var galleryEl = document.getElementById('city-gallery');
+
+    function stripHtml(html) {
+      var tmp = document.createElement('div');
+      tmp.innerHTML = html || '';
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function looksLikePhoto(title) {
+      var lower = title.toLowerCase();
+      if (!/\.(jpe?g)$/.test(lower)) return false; // svg/png are almost always maps, flags, coats of arms
+      if (lower.indexOf('stemma') !== -1) return false;   // coat of arms
+      if (lower.indexOf('location map') !== -1) return false;
+      if (lower.indexOf('flag') !== -1) return false;
+      return true;
+    }
+
+    var pageImagesUrl = 'https://en.wikipedia.org/w/api.php?action=query&titles=' +
+      encodeURIComponent(PAGE_TITLE) + '&prop=images&imlimit=50&format=json&origin=*';
+
+    fetch(pageImagesUrl)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var pages = data.query && data.query.pages;
+        if (!pages) throw new Error('no pages');
+        var page = pages[Object.keys(pages)[0]];
+        var titles = (page.images || [])
+          .map(function (i) { return i.title; })
+          .filter(looksLikePhoto)
+          .slice(0, WANTED);
+        if (!titles.length) throw new Error('no photo-like images found');
+
+        var infoUrl = 'https://en.wikipedia.org/w/api.php?action=query&titles=' +
+          encodeURIComponent(titles.join('|')) +
+          '&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=280&format=json&origin=*';
+        return fetch(infoUrl).then(function (r) { return r.json(); });
+      })
+      .then(function (data) {
+        var pages = data.query && data.query.pages;
+        if (!pages) throw new Error('no image info');
+        var items = Object.keys(pages).map(function (k) { return pages[k]; })
+          .filter(function (p) { return p.imageinfo && p.imageinfo[0]; });
+
+        if (!items.length) throw new Error('no usable images');
+
+        galleryEl.innerHTML = '';
+        items.slice(0, WANTED).forEach(function (p) {
+          var info = p.imageinfo[0];
+          var meta = info.extmetadata || {};
+          var artist = stripHtml(meta.Artist && meta.Artist.value).trim() || 'Wikimedia Commons';
+          var license = (meta.LicenseShortName && meta.LicenseShortName.value) || '';
+
+          var item = document.createElement('div');
+          item.className = 'gallery-item';
+
+          var img = document.createElement('img');
+          img.src = info.thumburl || info.url;
+          img.alt = p.title.replace(/^File:/, '').replace(/\.[a-zA-Z]+$/, '');
+          img.loading = 'lazy';
+
+          var credit = document.createElement('div');
+          credit.className = 'gallery-credit';
+          credit.textContent = artist + (license ? ' · ' + license : '');
+
+          item.appendChild(img);
+          item.appendChild(credit);
+          galleryEl.appendChild(item);
+        });
+      })
+      .catch(function () {
+        galleryEl.innerHTML = '<div class="gallery-loading">Couldn\'t load images from Wikimedia right now.</div>';
+      });
+  })();
+</script>
+</body>
+</html>

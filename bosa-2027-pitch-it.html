@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Bosa 2027 — Città della Musica e delle Arti di Strada</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F6F2E9; --surface:#FFFFFF; --border:#E5DFD1;
+    --text:#1F1B16; --text-muted:#6B6259; --text-body:#3A342C;
+    --rust:#B54A2A; --rust-bg:#F0E8D8; --rust-text:#8A5A1E;
+    --sage:#4C6B52; --sage-bg:#E8EEE7; --sage-text:#3E5A43;
+  }
+  * { box-sizing: border-box; }
+  @page { size: A4; margin: 14mm; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    font-size: 10.5px; line-height: 1.45;
+  }
+  .sheet { max-width: 210mm; margin: 0 auto; padding: 16mm 14mm; background: var(--bg); }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; margin: 0; }
+  .lang-switch { text-align:right; font-size:9px; margin-bottom:6px; }
+  .lang-switch a { color:var(--text-muted); text-decoration:none; }
+  .lang-switch a:hover { color:var(--rust); }
+  .lang-switch .current { color:var(--text); font-weight:600; }
+  .masthead { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--text); padding-bottom:10px; margin-bottom:14px; }
+  .masthead .logo { font-size:13px; font-weight:700; color:var(--text-muted); }
+  .title { font-size:30px; font-weight:700; line-height:1.05; }
+  .subtitle { font-size:13px; color:var(--rust-text); font-weight:600; margin-top:4px; }
+  .meta { font-size:10px; color:var(--text-muted); text-align:right; }
+  .lede { font-size:12.5px; color:var(--text-body); line-height:1.55; margin-bottom:16px; max-width: 165mm; }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px 22px; }
+  .full { grid-column: 1 / -1; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .card h2 { font-size:13px; font-weight:600; margin-bottom:6px; color:var(--text); }
+  .card h2 .num { color:var(--rust); margin-right:5px; }
+  .card p, .card li { font-size:10px; color:var(--text-body); line-height:1.5; }
+  .card ul { margin:4px 0 0; padding-left:15px; }
+  .card ul li { margin-bottom:3px; }
+  .tag { display:inline-block; font-size:9px; font-weight:600; padding:2px 8px; border-radius:999px; background:var(--sage-bg); color:var(--sage-text); margin-bottom:6px; }
+  .indicators { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:4px; }
+  .indicator { text-align:center; background:var(--rust-bg); border-radius:6px; padding:8px 4px; }
+  .indicator .n { font-family:'Fraunces',serif; font-weight:700; font-size:15px; color:var(--rust); display:block; }
+  .indicator .l { font-size:8px; color:var(--text-muted); }
+  .footer-strap { text-align:center; margin-top:14px; padding-top:10px; border-top:1px solid var(--border); font-family:'Fraunces',serif; font-size:10px; color:var(--text-muted); }
+  .draft-note { font-size:8.5px; color:var(--text-muted); text-align:center; margin-top:4px; }
+  @media print { .lang-switch { display:none; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="lang-switch"><span class="current">IT</span> · <a href="bosa-2027-pitch.html">EN</a></div>
+
+  <div class="masthead">
+    <div>
+      <div class="title">Bosa 2027</div>
+      <div class="subtitle">Città della Musica e delle Arti di Strada</div>
+    </div>
+    <div class="meta">Proposta per la Fondazione Bosa<br>Bozza per discussione — v0.2</div>
+  </div>
+
+  <div class="lede">
+    Bosa non ha mai avuto un titolo culturale annuale a livello comunale. Questa proposta è per il primo: un'identità
+    civica della durata di un anno, costruita attorno alla performance di strada, realizzata a costo zero per il
+    Comune e a rischio zero per le attività partecipanti — utilizzando <strong>Bed &amp; Busk</strong>, una
+    piattaforma di ospitalità basata sul baratto già in fase pilota a Bosa, come livello operativo.
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h2><span class="num">1.</span>Il Progetto</h2>
+      <p>Un anno solare intero che posiziona Bosa come la prima "città della musica di strada" della Sardegna —
+      artisti itineranti ospitati in tutta la città, che si esibiscono nei luoghi conosciuti, con un festival
+      dedicato alle arti di strada come momento culminante. Costruito su un'infrastruttura già esistente: un sito
+      pilota attivo, un elenco di patron, una mappa dei luoghi di esibizione e una guida locale, tutti specifici
+      per Bosa.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">2.</span>Come Funziona — La Stanza del Baratto</h2>
+      <ul>
+        <li>Un B&amp;B, una guesthouse o un piccolo hotel partecipante designa <strong>esattamente una stanza</strong> come "stanza del baratto"</li>
+        <li>Quella stanza viene offerta tramite Bed &amp; Busk in cambio di una breve esibizione — stesse condizioni in natura di qualsiasi annuncio patron, nessun contante coinvolto</li>
+        <li>Tutte le altre stanze continuano come attività normale a pagamento — nulla cambia nei ricavi principali</li>
+        <li>Le attività possono limitare la stanza del baratto alla <strong>sola bassa stagione</strong>, riempiendo una capacità che altrimenti resterebbe vuota</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">3.</span>Ente Responsabile</h2>
+      <p><strong>Fondazione Bosa</strong> — già alla guida dei luoghi culturali della città (Castello Malaspina,
+      Museo Casa Deriu) e promotrice di un programma annuale attivo ("Tramonti al Castello") con una comprovata
+      esperienza nell'ospitare partner culturali esterni. Bed &amp; Busk si affiancherebbe a quel programma come
+      livello di performance di strada e ospitalità, con il Comune di Bosa come sostenitore civico.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">4.</span>Sostenibilità Economica</h2>
+      <ul>
+        <li>Nessun sussidio pubblico necessario per il lancio — il meccanismo di base non costa nulla al Comune</li>
+        <li>Le attività partecipanti non sostengono alcun costo incrementale: una stanza, in natura, facoltativamente solo in bassa stagione</li>
+        <li>Potenziale di ricavo: visitatori di bassa stagione attratti specificamente dal programma di performance, con spesa in cibo, bevande e le altre stanze a pagamento dell'attività</li>
+        <li>Infrastruttura digitale già costruita e testata — nessun investimento tecnologico separato necessario</li>
+      </ul>
+    </div>
+
+    <div class="card full">
+      <span class="tag">Perché Ora</span>
+      <p>Un progetto pilota di una sola stagione è reversibile e a basso costo, e permette di dimostrare o confutare
+      il modello prima di qualsiasi impegno più ampio. Distingue Bosa tra i borghi sardi già noti solo per la loro
+      bellezza, aggiungendo un'attrattiva culturale viva e ricorrente — e, se funziona, un motivo per i visitatori di
+      venire specificamente a vedere gli artisti di strada, non solo la città.</p>
+    </div>
+
+    <div class="card full">
+      <h2><span class="num">5.</span>Obiettivi e Indicatori — Primo Anno</h2>
+      <div class="indicators">
+        <div class="indicator"><span class="n">10+</span><span class="l">attività iscritte con una stanza del baratto</span></div>
+        <div class="indicator"><span class="n">50+</span><span class="l">artisti itineranti ospitati durante l'anno</span></div>
+        <div class="indicator"><span class="n">6+</span><span class="l">luoghi di esibizione pubblici attivi</span></div>
+        <div class="indicator"><span class="n">↑ %</span><span class="l">occupazione in bassa stagione presso le attività partecipanti</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-strap">Bed &amp; Busk — una piattaforma di baratto per artisti itineranti</div>
+  <div class="draft-note">Bozza di lavoro — le cifre sono illustrative, in attesa di consultazione con il Comune e le attività. Non ancora presentata.</div>
+
+</div>
+</body>
+</html>

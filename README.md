@@ -6,7 +6,7 @@ A peer-to-peer barter and gift-economy hospitality platform for traveling artist
 
 ## Status
 
-Pre-MVP. Currently in the planning and pilot-design stage — no live site yet.
+Pre-MVP. Currently in the planning and pilot-design stage — demo site only.
 
 ## Repo contents
 
@@ -19,7 +19,7 @@ Pre-MVP. Currently in the planning and pilot-design stage — no live site yet.
 
 ## Wireframes
 
-Four working, standalone pages under [`docs/`](./docs) — plain HTML/CSS, no build step, no framework. This is also the folder GitHub Pages serves: with **Settings → Pages → Source** set to branch `main`, folder `/docs`, the live site is at https://blankworker1.github.io/bed-busk/
+Five working, standalone pages under [`docs/`](./docs) — plain HTML/CSS, no build step, no framework. This is also the folder GitHub Pages serves with the live site  at https://blankworker1.github.io/bed-busk/
 
 | Page | Covers |
 | --- | --- |
